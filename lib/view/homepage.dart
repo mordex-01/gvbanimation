@@ -30,7 +30,52 @@ class HomePage extends GetView<HomePageController> {
           onTap: () {
             showDialog(
               context: context,
-              builder: (context) => Container(),
+              builder: (context) => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Obx(
+                      () => AnimatedContainer(
+                        duration: const Duration(seconds: 1),
+                        width: controller.boxWidth.value,
+                        height: controller.boxHeight.value,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(25),
+                          child: Image.asset(
+                            imagesList[index],
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RawMaterialButton(
+                        onPressed: () {
+                          controller.onIncreeseBox();
+                          Get.appUpdate();
+                        },
+                        fillColor: Colors.blue,
+                        child: const Text("ZoomIn"),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      RawMaterialButton(
+                        onPressed: () {
+                          controller.onDecreeseBox();
+                          Get.appUpdate();
+                        },
+                        fillColor: Colors.red,
+                        child: const Text("ZoomOut"),
+                      )
+                    ],
+                  )
+                ],
+              ),
             );
           },
           child: ClipRRect(
