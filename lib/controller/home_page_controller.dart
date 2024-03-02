@@ -4,7 +4,7 @@ class HomePageController extends GetxController {
   RxDouble boxHeight = RxDouble(200);
   RxDouble boxWidth = RxDouble(200);
   void onIncreeseBox() {
-    if (boxHeight.value == 400) {
+    if (boxHeight.value == 500) {
       return;
     }
     boxHeight = RxDouble(boxHeight.value + 100);
